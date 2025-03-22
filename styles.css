@@ -1,0 +1,199 @@
+/* General Styles */
+body {
+  font-family: 'Orbitron', sans-serif; /* Use Orbitron font */
+  margin: 0;
+  padding: 0;
+  background-color: #000; /* Black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #fff; /* White text */
+  background-image: url('assets/bg-image.jpg'); /* Optional: Add a dark background image */
+  background-size: cover;
+  background-position: center;
+}
+
+/* Container Styles */
+.landing-container, .augmentor-container, .generator-container {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+  width: 90%;
+  max-width: 500px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header Styles */
+.header h1 {
+  color: #00ffcc; /* Neon teal */
+  font-size: 3.5rem; /* Increased font size */
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc; /* Glow effect */
+  letter-spacing: 5px; /* Add spacing between letters */
+  font-weight: 700; /* Bold font weight */
+  text-transform: uppercase; /* Uppercase text */
+  background: linear-gradient(90deg, #00ffcc, #00ccaa); /* Gradient text */
+  -webkit-background-clip: text; /* Clip text to background */
+  -webkit-text-fill-color: transparent; /* Transparent text */
+}
+
+.header p {
+  color: #ccc; /* Light gray */
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+/* Landing Page Styles */
+.options {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.option-card {
+  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.option-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.option-card img {
+  width: 80px;
+  height: auto;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 5px #00ffcc); /* Glow effect */
+}
+
+.option-card h2 {
+  color: #00ffcc; /* Neon teal */
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.option-card p {
+  color: #ccc; /* Light gray */
+  font-size: 1rem;
+}
+
+/* Coming Soon Text */
+.coming-soon {
+  color: #ffcc00; /* Yellow for emphasis */
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+/* Augmentor Page Styles */
+.upload-section {
+  margin-bottom: 20px;
+}
+
+.upload-section input[type="file"] {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #00ffcc; /* Neon teal */
+  border-radius: 5px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.upload-section button {
+  padding: 10px 20px;
+  background-color: #00ffcc; /* Neon teal */
+  color: #000; /* Black text */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.upload-section button:hover {
+  background-color: #00ccaa; /* Darker teal */
+  transform: translateY(-5px);
+}
+
+.preview-section {
+  margin-bottom: 20px;
+}
+
+.preview-section h2 {
+  color: #00ffcc; /* Neon teal */
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+#previewArea {
+  border: 1px solid #00ffcc; /* Neon teal */
+  padding: 10px;
+  min-height: 100px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-top: 10px;
+  color: #fff; /* White text */
+  border-radius: 5px;
+}
+
+.download-section {
+  margin-bottom: 20px;
+}
+
+.download-section h2 {
+  color: #00ffcc; /* Neon teal */
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.download-section select {
+  padding: 10px;
+  border: 1px solid #00ffcc; /* Neon teal */
+  border-radius: 5px;
+  margin-right: 10px;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.download-section button {
+  padding: 10px 20px;
+  background-color: #00ffcc; /* Neon teal */
+  color: #000; /* Black text */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.download-section button:hover {
+  background-color: #00ccaa; /* Darker teal */
+  transform: translateY(-5px);
+}
+
+/* Generator Page Styles */
+.coming-soon-message {
+  margin-top: 20px;
+  color: #ccc; /* Light gray */
+  font-size: 1.2rem;
+}

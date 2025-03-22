@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TURTLE Augmentor</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Add Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="augmentor-container">
+    <div class="header">
+      <h1>TURTLE Augmentor</h1>
+      <p>Upload a PDF, preview augmented data, and download in your desired format.</p>
+    </div>
+
+    <!-- PDF Upload Section -->
+    <div class="upload-section">
+      <input type="file" id="pdfInput" accept="application/pdf">
+      <button id="uploadBtn">Upload PDF</button>
+    </div>
+
+    <!-- Preview Section -->
+    <div class="preview-section">
+      <h2>Preview Augmented Data</h2>
+      <div id="previewArea"></div>
+    </div>
+
+    <!-- Download Section -->
+    <div class="download-section">
+      <h2>Download Data</h2>
+      <select id="formatSelect">
+        <option value="pdf">PDF</option>
+        <option value="json">JSON</option>
+        <option value="txt">TXT</option>
+      </select>
+      <button id="downloadBtn">Download</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
