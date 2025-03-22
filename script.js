@@ -1,59 +1,50 @@
-// JavaScript for Augmentor Page
 const pdfInput = document.getElementById('pdfInput');
 const uploadBtn = document.getElementById('uploadBtn');
 const previewArea = document.getElementById('previewArea');
-const formatSelect = document.getElementById('formatSelect');
 const downloadBtn = document.getElementById('downloadBtn');
 
-let uploadedData = null;
+let dataset = null;
+const API_URL = "http://127.0.0.1:5000"; // Replace with actual ngrok URL
 
-// Handle PDF Upload
-uploadBtn.addEventListener('click', () => {
-  const file = pdfInput.files[0];
-  if (file && file.type === 'application/pdf') {
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      // Simulate augmented data (replace with actual logic)
-      uploadedData = `Augmented data from ${file.name}`;
-      previewArea.textContent = uploadedData;
-    };
-    reader.readAsText(file); // Read as text for simplicity
-  } else {
-    alert('Please upload a valid PDF file.');
-  }
+uploadBtn.addEventListener('click', async () => {
+    const file = pdfInput.files[0];
+    if (!file || file.type !== 'application/pdf') {
+        alert('Please upload a valid PDF file.');
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+        const response = await fetch(`${API_URL}/upload`, {
+            method: 'POST',
+            body: formData
+        });
+        const result = await response.json();
+
+        if (result.error) {
+            alert(result.error);
+            return;
+        }
+
+        dataset = result.dataset;
+        previewArea.innerHTML = dataset.map(item => `<p><b>Q:</b> ${item.question}<br><b>A:</b> ${item.answer}</p>`).join('');
+    } catch (error) {
+        alert('Error uploading file. Check the API connection.');
+    }
 });
 
 // Handle Download
 downloadBtn.addEventListener('click', () => {
-  if (!uploadedData) {
-    alert('No data to download. Please upload a PDF first.');
-    return;
-  }
+    if (!dataset) {
+        alert('No data to download. Upload a PDF first.');
+        return;
+    }
 
-  const format = formatSelect.value;
-  let blob, filename;
-
-  switch (format) {
-    case 'pdf':
-      // Convert data to PDF (requires a library like jsPDF)
-      alert('PDF download not implemented yet.');
-      break;
-    case 'json':
-      blob = new Blob([JSON.stringify(uploadedData)], { type: 'application/json' });
-      filename = 'data.json';
-      break;
-    case 'txt':
-      blob = new Blob([uploadedData], { type: 'text/plain' });
-      filename = 'data.txt';
-      break;
-    default:
-      alert('Invalid format selected.');
-      return;
-  }
-
-  // Create a download link
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = filename;
-  link.click();
+    const blob = new Blob([JSON.stringify(dataset, null, 2)], { type: 'application/json' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'dataset.json';
+    link.click();
 });
